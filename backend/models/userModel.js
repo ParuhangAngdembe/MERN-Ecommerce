@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
 /*
 ->Pre middleware functions are executed one after another, when each middleware calls next
 ->The next keyword refer to the next middleware that will run after yours to process the request
-->Four types of middleware, 'save', document function supported by document middleware
+->Four types of middleware; 'save', document-function supported by document middleware
 */
 userSchema.pre("save", async function (next) {
   // here this refers to the document
