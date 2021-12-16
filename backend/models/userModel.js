@@ -50,10 +50,15 @@ const userSchema = new mongoose.Schema({
 */
 userSchema.pre("save", async function (next) {
   // here this refers to the document
-  // only hash the password if it has been modified (or is new)
+  // only hash the password if it has been modified (or is new)-WHEN NOT MODIFIED
+
   if (!this.isModified("password")) {
     next();
   }
+  // if (this.isModified("password")) {
+  //   console.log(this.isModified("password"));
+  //   next();
+  // }
   this.password = await bcrypt.hash(this.password, 10);
 });
 

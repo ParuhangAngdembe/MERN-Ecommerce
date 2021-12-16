@@ -48,4 +48,16 @@ const loginUser = asyncErrorWrapper(async (req, res, next) => {
   // });
 });
 
-module.exports = { registerUser, loginUser };
+// Logout User
+const logoutUser = asyncErrorWrapper(async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    success: true,
+    message: "Logged Out",
+  });
+});
+
+module.exports = { registerUser, loginUser, logoutUser };

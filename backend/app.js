@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
 
 const errorHandlerware = require("./middleware/error");
 
@@ -15,6 +16,7 @@ NOTE----------------------
  -> It is a method inbuilt in express to recognize the incoming Request Object as a JSON Object. This method is called as a middleware 
  */
 app.use(express.json());
+app.use(cookieParser());
 
 //ROUTES
 app.get("/", (req, res) => {
