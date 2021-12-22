@@ -9,6 +9,7 @@ const getAllProducts = asyncErrorWrapper(async (req, res) => {
 });
 
 const createProducts = asyncErrorWrapper(async (req, res) => {
+  req.body.user = req.user.id;
   const product = await Product.create(req.body);
   res.status(200).json({ product });
 });

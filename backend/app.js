@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
 const errorHandlerware = require("./middleware/error");
 
@@ -17,6 +18,7 @@ NOTE----------------------
  */
 app.use(express.json());
 app.use(cookieParser());
+//app.use(bodyParser.json());
 
 //ROUTES
 app.get("/", (req, res) => {

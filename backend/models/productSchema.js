@@ -59,6 +59,12 @@ const ProductSchema = new mongoose.Schema({
       },
     },
   ],
+  // Needed to see who made the product
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -1,6 +1,7 @@
 const ErrorHandler = require("../utils/errohandler");
 const jwt = require("jsonwebtoken");
 const user = require("../models/userModel");
+const { findById } = require("../models/userModel");
 
 const isUserAuthenticated = async (req, res, next) => {
   // cookie-parser parses Cookie header and populates req.cookies with an object keyed by the cookie names.
@@ -13,12 +14,18 @@ const isUserAuthenticated = async (req, res, next) => {
   }
   const decodeData = jwt.verify(token, process.env.JWT_SECRET);
 
+  // as long as the user is authenticated we can access 'request' user data
+  // findById because the token was made by signing the id ....
   req.user = await user.findById(decodeData.id);
   next();
 };
 
 const authorizedRoles = (...roles) => {
   return (req, res, next) => {
+    /*
+    (req.user.role) = ["admin"]
+    'roles' yo roles chai mathi thena bhane(!roles)
+    */
     if (!roles.includes(req.user.role)) {
       return next(
         new ErrorHandler(
