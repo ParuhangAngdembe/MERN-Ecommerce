@@ -1,7 +1,6 @@
 const ErrorHandler = require("../utils/errohandler");
 const jwt = require("jsonwebtoken");
-const user = require("../models/userModel");
-const { findById } = require("../models/userModel");
+const User = require("../models/userModel");
 
 const isUserAuthenticated = async (req, res, next) => {
   // cookie-parser parses Cookie header and populates req.cookies with an object keyed by the cookie names.
@@ -16,7 +15,7 @@ const isUserAuthenticated = async (req, res, next) => {
 
   // as long as the user is authenticated we can access 'request' user data
   // findById because the token was made by signing the id ....
-  req.user = await user.findById(decodeData.id);
+  req.user = await User.findById(decodeData.id);
   next();
 };
 

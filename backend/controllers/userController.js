@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const { find } = require("../models/userModel");
 
 // Register a User
 const registerUser = asyncErrorWrapper(async (req, res, next) => {
@@ -135,10 +136,128 @@ const resetPassword = asyncErrorWrapper(async (req, res, next) => {
   // Login after change password
 });
 
+// Update Password
+const updatePassword = asyncErrorWrapper(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");
+
+  const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
+
+  if (!isPasswordMatch) {
+    return next(new ErrorHandler("Old Passowrd Does Not Match", 400));
+  }
+
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(new ErrorHandler("Password Doesn't Match", 400));
+  }
+
+  user.password = req.body.newPassword;
+  await user.save();
+  sendToken(user, 200, res);
+});
+
+// Get User Details
+const getUserDetails = asyncErrorWrapper(async (req, res, next) => {
+  // can only be acessed by users that are loged-in
+  // auth.js -> if logged in user is saved in 'user'
+  const user = await User.findById(req.user.id);
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+// Update User Details
+const updateUserDetails = asyncErrorWrapper(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Get all users(admin)
+const getAllUser = asyncErrorWrapper(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+// Get single user (admin)
+const getSingleUser = asyncErrorWrapper(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User does not exist with id: ${req.params.id}`)
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+// Update User Role (admin)
+const updateUserRole = asyncErrorWrapper(async (req, res, next) => {
+  const userData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  const user = await User.findByIdAndUpdate(req.params.id, userData, {
+    new: true,
+    runValidators: true,
+    userFindAndModify: false,
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User Not Found with id: ${req.params.id}`, 404)
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Delete User (admin)
+const deleteUser = asyncErrorWrapper(async (req, res, next) => {
+  const user = await User.findByIdAndDelete(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User Not Found with id: ${req.params.id}`, 404)
+    );
+  }
+  res.status(200).json({ success: true, message: "User Deleted Successfully" });
+});
+
 module.exports = {
   registerUser,
   loginUser,
   logoutUser,
   forgotPassword,
   resetPassword,
+  updatePassword,
+  getUserDetails,
+  updateUserDetails,
+  getAllUser,
+  getSingleUser,
+  updateUserRole,
+  deleteUser,
 };

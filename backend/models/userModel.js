@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minlength: [8, "Password length hsould be greater than 8"],
+    minlength: [8, "Password length should be greater than 8"],
     // doesn't allow to find select password
     select: false,
   },

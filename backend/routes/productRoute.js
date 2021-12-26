@@ -9,13 +9,15 @@ const {
 const { isUserAuthenticated, authorizedRoles } = require("../middleware/auth");
 
 // Route!!!
+router.route("/").get(isUserAuthenticated, getAllProducts);
+// router.route("/product/:id").get(getProductDetails);
+
 router
-  .route("/")
-  .get(isUserAuthenticated, getAllProducts)
+  .route("/admin/product/new")
   .post(isUserAuthenticated, authorizedRoles("admin"), createProducts);
 
 router
-  .route("/:id")
+  .route("/admin/product/:id")
   .put(isUserAuthenticated, authorizedRoles("admin"), updateProducts)
   .delete(isUserAuthenticated, authorizedRoles("admin"), deleteProducts);
 
