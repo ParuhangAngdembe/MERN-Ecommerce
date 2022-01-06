@@ -10,6 +10,7 @@ const errorHandlerware = require("./middleware/error");
 const connectDB = require("./db/connect");
 const productRouter = require("./routes/productRoute");
 const userRouter = require("./routes/userRoute");
+const orderRouter = require("./routes/orderRoute");
 
 /*    
 NOTE----------------------
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/order", orderRouter);
 
 //Middleware: Error Handler
 app.use(errorHandlerware);
