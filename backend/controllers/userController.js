@@ -9,10 +9,10 @@ const { find } = require("../models/userModel");
 // Register a User
 const registerUser = asyncErrorWrapper(async (req, res, next) => {
   //   res.send("register page");
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   const user = await User.create({
-    name,
+    username,
     email,
     password,
     avatar: {
@@ -169,7 +169,7 @@ const getUserDetails = asyncErrorWrapper(async (req, res, next) => {
 // Update User Details
 const updateUserDetails = asyncErrorWrapper(async (req, res, next) => {
   const newUserData = {
-    name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
   };
 
@@ -213,7 +213,7 @@ const getSingleUser = asyncErrorWrapper(async (req, res, next) => {
 // Update User Role (admin)
 const updateUserRole = asyncErrorWrapper(async (req, res, next) => {
   const userData = {
-    name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
     role: req.body.role,
   };
