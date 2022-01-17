@@ -1,0 +1,86 @@
+footer{
+    margin-top: 10vmax;
+    padding: 2vmax;
+    background-color: rgb(34,33,33);
+    color:white;
+    display: flex;
+    align-items: center;
+}
+/* LEFT */
+.leftFooter {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+.leftFooter > h4 {
+    font-family: "Roboto";
+    font-size: 1.4vmax;
+}
+.leftFooter > img {
+    width: 10vmax;
+    margin: 0.8vmax;
+    cursor: pointer;
+}
+  
+/* MID */
+.midFooter {
+    width: 60%;
+  
+    text-align: center;
+  }
+.midFooter > h1 {
+    font-size: 6vmax;
+    font-family: "Roboto";
+    color: #ffffff;
+  }
+.midFooter > p {
+    max-width: 60%;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 1vmax auto;
+  }
+
+/* RIGHT */
+.rightFooter {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.rightFooter > h4 {
+    font-family: "Roboto";
+    font-size: 1.4vmax;
+  }
+.rightFooter > a {
+    text-decoration: none;
+    transition: all 0.5s;
+    margin: 0.5vmax;
+  }
+
+  /* logos */
+.fa {
+    padding: 5px;
+    font-size: 1.3vmax;
+    width: 15%;
+    text-align: center;
+    text-decoration: none;
+    margin: 0.5vmax;
+  }
+.fa:hover {
+      background: black;
+      color: white;
+  }
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+.fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+.fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  
