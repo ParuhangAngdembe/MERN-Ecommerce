@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav{
+  display: block;
+  position: relative;
+  /* top: 0;
+  padding:0; */
+}
+.navContainer{
+  padding: 0;
+}
+.brand{
+  padding: 0;
+}
+.brand img{
+  width: 50px;
+}
+
+
+
+
+
+.featured-product{
+  text-align: center;
+  margin: auto;
+padding: 20px 0 20px 0;
+
+}
+.featured-product h1{
+  display: inline-block;
+  border-bottom: double;
+}
+.responsive{
+  width: 100%;
+  height: auto;
+}

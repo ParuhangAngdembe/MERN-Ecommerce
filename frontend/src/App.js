@@ -4,7 +4,8 @@ import { Route, Routes } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Register from "./components/register/register";
-import Home from "./components/home";
+import Home from "./components/main";
+import About from "./components/About/about";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="api/v1/user/register" exact element={<Register />} />
+        <Route path="/register" exact element={<Register />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </>

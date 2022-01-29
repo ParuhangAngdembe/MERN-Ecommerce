@@ -1,21 +1,22 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import "./footer.css";
 import playstore from "../../images/playstore.png";
 import applestore from "../../images/Appstore.png";
-
+import logo from "../../images/logo.2.png";
 const Footer = () => {
   return (
     <footer id="footer">
       <div className="leftFooter">
-        <h4>Download Our App</h4>
+        <h4>Download</h4>
         <img src={playstore} alt="playstore" />
         <img src={applestore} alt="Appstore" />
       </div>
 
       <div className="midFooter">
-        <h1>जुत्ता पसल</h1>
-        <p>Customer Satisfaction is Our Top Priority</p>
-
+        <img className="logo" src={logo} alt="shoe store" />
+        <p>SOLES</p>
+        <p>जुत्ता पसल</p>
         <p>Copyrights 2022 &copy; Paruhang Angdembe</p>
       </div>
 
@@ -23,15 +24,15 @@ const Footer = () => {
         <h4>Follow Us</h4>
         <a
           href="https://www.instagram.com/paruhangisoffline/"
-          class="fa fa-instagram"
+          class="fab fa-instagram"
         ></a>
         <a
           href="https://www.youtube.com/channel/UCd83oZkCmlWIJDcgJqa0xRg"
-          class="fa fa-youtube"
+          class="fab fa-youtube"
         ></a>
         <a
           href="https://www.facebook.com/paruhang.angdembe.3/"
-          class="fa fa-facebook"
+          class="fab fa-facebook"
         ></a>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 footer{
-    margin-top: 10vmax;
+
     padding: 2vmax;
     background-color: rgb(34,33,33);
     color:white;
@@ -25,20 +25,20 @@ footer{
 }
   
 /* MID */
-.midFooter {
+.midFooter{
     width: 60%;
-  
     text-align: center;
   }
-.midFooter > h1 {
-    font-size: 6vmax;
-    font-family: "Roboto";
-    color: #ffffff;
+.midFooter > img {
+  display: block;
+  margin: auto;
+  height: 16vh;
+  width: 12vh;
   }
 .midFooter > p {
     max-width: 60%;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    margin: 1vmax auto;
+    margin: 0.5vmax auto;
   }
 
 /* RIGHT */
@@ -53,13 +53,15 @@ footer{
     font-size: 1.4vmax;
   }
 .rightFooter > a {
+  color: white;
     text-decoration: none;
     transition: all 0.5s;
     margin: 0.5vmax;
   }
 
   /* logos */
-.fa {
+.fab {
+  color: white;
     padding: 5px;
     font-size: 1.3vmax;
     width: 15%;
@@ -67,7 +69,7 @@ footer{
     text-decoration: none;
     margin: 0.5vmax;
   }
-.fa:hover {
+.fab:hover {
       background: black;
       color: white;
   }
